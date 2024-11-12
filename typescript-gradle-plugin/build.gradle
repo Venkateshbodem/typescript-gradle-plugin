@@ -1,6 +1,24 @@
 plugins {
 	id "com.gradle.plugin-publish" version "0.9.2"
+	id "jacoco"
+	id "java"
 }
+}
+jacoco {
+    toolVersion = "0.8.7"
+}
+ 
+jacocoTestReport {
+    reports {
+        xml.required.set(true)
+        csv.required.set(true)
+        html.required.set(true)
+        html.destination file("${buildDir}/reports/html/jacoco")
+        xml.destination file("${buildDir}/reports/xml/jacoco")
+        csv.destination file("${buildDir}/reports/csv/jacoco")
+    }
+}
+
 
 repositories {
 	mavenCentral()
